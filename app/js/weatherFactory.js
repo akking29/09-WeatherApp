@@ -13,7 +13,7 @@ angular.module('app')
 
 			function getWeather(city) {
           var url = 'http://api.openweathermap.org/data/2.5/weather?q=';
-           var id = '?q=id=524901&APPID=f5d8a0e5797079daa25d276db49b6b25';
+           var id = '&units=imperial&?q=id=524901&APPID=f5d8a0e5797079daa25d276db49b6b25';
            var city = city;
            var defer = $q.defer();
         

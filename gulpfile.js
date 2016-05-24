@@ -6,7 +6,7 @@ var gulp = require('gulp'),
    inject = require('gulp-inject'),        // inject app dependency includes on index.html
    open = require('gulp-open');            // open a URL in the browser
 
-var jsSources = ['app/*.js'],
+var jsSources = ['app/js/*.js'],
    cssSources = ['app/**/*.css'],
    htmlSources = ['**/*.html'];
 
