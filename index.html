@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="app">
+<head>
+ <meta charset="UTF-8">
+ <title>Mem Game</title>
+<!-- bower:css -->
+<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap-theme.min.css" integrity="sha384-fLW2N01lMqjakBkx3l/M9EahuwpSfeNvV63J5ezn3uZzapT0u7EYsXMjQV+0En5r" crossorigin="anonymous">
+<!-- endbower -->
+
+<!-- inject:css -->
+<link rel="stylesheet" href="/app/style/style.css">
+<!-- endinject -->
+</head>
+
+<body ng-controller="weatherController" >
+<!-- bower:js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<!-- endbower -->
+<div class="page-header">
+  <h1 id="title"> Weather <small> </small></h1>
+</div>
+<!-- inject:js -->
+<script src="/app/js/app.js"></script>
+<script src="/app/js/weatherController.js"></script>
+<script src="/app/js/weatherFactory.js"></script>
+<script language="javascript" src="bower_components/toastr/toastr.js"></script>
+<link rel='stylesheet' href="bower_components/toastr/toastr.css">
+<!-- endinject -->
+
+			<div class="input-group" ng-model='weatherController'>
+	  		<div class="input-group-btn">
+  		<button type="submit" class="btn btn-primary" ng-click="getWeather($scope.city)">Search</button>
+  		<button type="button" class="btn btn-default" ng-click="getWeather('sandiego')">San Diego</button>
+  		<button type="button" class="btn btn-default" ng-click="getWeather('oceanside')">Oceanside</button>
+  		<button type="button" class="btn btn-default" ng-click="getWeather('seattle')">Seattle</button>
+  		<button type="button" class="btn btn-default" ng-click="getWeather('amarillo')">Amarillo</button>
+  		<button type="button" class="btn btn-default" ng-click="getWeather('boise')">Boise</button>
+	
+	 	 </div>
+	  <input type="text" class="form-control" aria-label="..." placeholder="Search" ng-model="$scope.city">
+	</div>
+	<div class="row">
+		<li>{{weather.weather[0].main}}</li>
+		
+	</div>
+
+	
+
+</body>
+</html>
