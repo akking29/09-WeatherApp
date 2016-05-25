@@ -1,118 +1,104 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
-<head>
- <meta charset="UTF-8">
- <title>Weather</title>
-<!-- bower:css -->
-<link rel="stylesheet" href="bower_components/toastr/toastr.css" />
-<link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
-<!-- endbower -->
 
-<!-- inject:css -->
-<link rel="stylesheet" href="/app/style/style.css">
-<!-- endinject -->
+<head>
+    <meta charset="UTF-8">
+    <title>Weather</title>
+    <!-- bower:css -->
+    <link rel="stylesheet" href="bower_components/toastr/toastr.css" />
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" />
+    <!-- endbower -->
+    <!-- inject:css -->
+    <link rel="stylesheet" href="/app/style/style.css">
+    <!-- endinject -->
 </head>
 
-<body ng-controller="weatherController" >
-<!-- bower:js -->
-<script src="bower_components/jquery/dist/jquery.js"></script>
-<script src="bower_components/angular/angular.js"></script>
-<script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
-<script src="bower_components/toastr/toastr.js"></script>
-<!-- endbower -->
-<div>
-<div class="jumbotron">
-  <h1 id="title" class="text-center"> Weather Time </h1>
-</div>
-</div>
-
-<!-- inject:js -->
-<script src="/app/js/app.js"></script>
-<script src="/app/js/weatherController.js"></script>
-<script src="/app/js/weatherFactory.js"></script>
-<script language="javascript" src="bower_components/toastr/toastr.js"></script>
-<script language="javascript" src="bower_components/moment/moment.js"></script>
-<!-- endinject -->
-		
-		<div class='col-md-12'>
-			
-			<div class="input-group" ng-model='weatherController'>
-	  		<div class="input-group-btn">
-  			<button type="submit" class="btn btn-primary" ng-click="getWeather($scope.city)">Search</button>
-  			<button type="button" class="btn btn-default" ng-click="getWeather('sandiego')">San Diego</button>
-  			<button type="button" class="btn btn-default" ng-click="getWeather('oceanside')">Oceanside</button>
-  			<button type="button" class="btn btn-default" ng-click="getWeather('seattle')">Seattle</button>
-  			<button type="button" class="btn btn-default" ng-click="getWeather('amarillo')">Amarillo</button>
-  			<button type="button" class="btn btn-default" ng-click="getWeather('boise')">Boise</button>
-	
-	 	 </div>
-		
-		<form ng-submit='getWeather($scope.city)'>
-	 	 <input type="text" class="form-control" aria-label="..." placeholder="Search" ng-model="city">
-	 	</form> 
-	 
-	  </div>
-	</div>  
-
-	  <br />
-				<div class ='col-md-6'>
-					<div class="panel panel-primary ">
-				  		<div class="panel-heading">
-				    		<h2 class="panel-title-danger text-center">{{weather.name}} </h2> 
-				    		  <h3 class='text-center'> Lat: {{weather.coord.lat}} Lon: {{weather.coord.lon}}  </h3>
-				  		</div>
-				  	<div class="panel-body text-center">
-				    
-				    <div class='row'>
-				    	<div class='col-md-12'>
-				    		<div id='icon'><h3><img src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png' class='image-responsive'/>
+<body ng-controller="weatherController">
+    <!-- bower:js -->
+    <script src="bower_components/jquery/dist/jquery.js"></script>
+    <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/bootstrap/dist/js/bootstrap.js"></script>
+    <script src="bower_components/toastr/toastr.js"></script>
+    <!-- endbower -->
+    <div>
+        <div class="jumbotron">
+            <h1 id="title" class="text-center"> Weather Time </h1>
+        </div>
+    </div>
+    <!-- inject:js -->
+    <script src="/app/js/app.js"></script>
+    <script src="/app/js/weatherController.js"></script>
+    <script src="/app/js/weatherFactory.js"></script>
+    <script language="javascript" src="bower_components/toastr/toastr.js"></script>
+    <script language="javascript" src="bower_components/moment/moment.js"></script>
+    <!-- endinject -->
+    <div class='col-md-12'>
+        <div class="input-group" ng-model='weatherController'>
+            <div class="input-group-btn">
+                <button type="submit" class="btn btn-primary" ng-click="getWeather($scope.city)">Search</button>
+                <button type="button" class="btn btn-default" ng-click="getWeather('sandiego')">San Diego</button>
+                <button type="button" class="btn btn-default" ng-click="getWeather('oceanside')">Oceanside</button>
+                <button type="button" class="btn btn-default" ng-click="getWeather('seattle')">Seattle</button>
+                <button type="button" class="btn btn-default" ng-click="getWeather('amarillo')">Amarillo</button>
+                <button type="button" class="btn btn-default" ng-click="getWeather('boise')">Boise</button>
+            </div>
+            <form ng-submit='getWeather($scope.city)'>
+                <input type="text" class="form-control" aria-label="..." placeholder="Search" ng-model="city">
+            </form>
+        </div>
+    </div>
+    <br />
+    <div class='col-md-6'>
+        <div class="panel panel-primary ">
+            <div class="panel-heading">
+                <h2 class="panel-title-danger text-center">{{weather.name}} </h2>
+                <h3 class='text-center'> Lat: {{weather.coord.lat}} Lon: {{weather.coord.lon}}  </h3>
+            </div>
+            <div class="panel-body text-center">
+                <div class='row'>
+                    <div class='col-md-12'>
+                        <div id='icon'>
+                            <h3><img src='http://openweathermap.org/img/w/{{weather.weather[0].icon}}.png' class='image-responsive'/>
 				    		<strong>{{weather.main.temp}}°F {{weather.weather[0].main}}</strong></h3></div>
-				    	</div>
-				    </div>
-
-				   	<div class='row descriptors'>
-				    <div class='col-xs-4'><strong> Humidity </strong></div>
-				    <div class='col-xs-4'><strong> Pressure  </strong></div>
-				    <div class='col-xs-4'><strong> Wind Speed  </strong></div>
-				</div> 
-					<div class='row descriptors'>
-				    <div class='col-xs-4 info'> {{weather.main.humidity}} </div>
-				    <div class='col-xs-4 info'> {{weather.main.pressure}} </div>
-				    <div class='col-xs-4 info'> {{weather.wind.speed}} </div>
-				</div>    		
-					<div class='row descriptors'>
-				    <div class='col-xs-4'><strong> High Temp. </strong></div>
-				    <div class='col-xs-4'><strong> Low Temp. </strong></div>
-				    <div class='col-xs-4'><strong> Cloud Cover </strong></div>
-				</div>
-					<div class='row descriptors'>
-				    <div class='col-xs-4 info'> {{weather.main.temp_max}} </div>
-				    <div class='col-xs-4 info'> {{weather.main.temp_min}}</div>
-				    <div class='col-xs-4 info'> {{weather.weather[0].description}}</div>
-				</div>    		   		    		   		
-			</div>
-		</div>
-	</div>
-			
-			<div class ='col-md-6'>
-				<div class="panel panel-primary">
-				  		<div class="panel-heading">
-				    		<h3 class="panel-title">Search History</h3>
-				  		</div>
-				  	<div class="panel-body">
-										
-					<ul class="list-group">
-					  <li class="list-group-item" ng-repeat='search in searches track by $index'>
-					    <span class="badge">{{search.time}}</span>
-					    {{search.name}}
-					  </li>
-					</ul>
-
-				</div>
-			</div>
-		</div>
-	
-
-
+                    </div>
+                </div>
+                <div class='row descriptors'>
+                    <div class='col-xs-4'><strong> Humidity </strong></div>
+                    <div class='col-xs-4'><strong> Pressure  </strong></div>
+                    <div class='col-xs-4'><strong> Wind Speed  </strong></div>
+                </div>
+                <div class='row descriptors'>
+                    <div class='col-xs-4 info'> {{weather.main.humidity}} </div>
+                    <div class='col-xs-4 info'> {{weather.main.pressure}} </div>
+                    <div class='col-xs-4 info'> {{weather.wind.speed}} </div>
+                </div>
+                <div class='row descriptors'>
+                    <div class='col-xs-4'><strong> High Temp. </strong></div>
+                    <div class='col-xs-4'><strong> Low Temp. </strong></div>
+                    <div class='col-xs-4'><strong> Cloud Cover </strong></div>
+                </div>
+                <div class='row descriptors'>
+                    <div class='col-xs-4 info'> {{weather.main.temp_max}} </div>
+                    <div class='col-xs-4 info'> {{weather.main.temp_min}}</div>
+                    <div class='col-xs-4 info'> {{weather.weather[0].description}}</div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class='col-md-6'>
+        <div class="panel panel-primary">
+            <div class="panel-heading">
+                <h3 class="panel-title">Search History</h3>
+            </div>
+            <div class="panel-body">
+                <ul class="list-group">
+                    <li class="list-group-item" ng-repeat='search in searches track by $index'>
+                        <span class="badge">{{search.time}}</span> {{search.name}}
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
 </body>
+
 </html>
